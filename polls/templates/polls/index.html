@@ -1,0 +1,21 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+<h1>starter Project</h1>
+{% if latest_question_list %}
+<ul>
+  {% for question in latest_question_list %}
+  <li>
+    <!--<a href="/polls/{{ question.id }}"> this approches it bad not loos couple i want to change the url atvsome point we shoul chat here too so instead use   url 'detail' question.id -->
+    <a href="{% url 'polls:detail' question.id %}">
+      {{ question.question_text }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>
+  No polls are available
+</p>
+{% endif %}
